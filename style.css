@@ -1,0 +1,359 @@
+/* ============ ПОДБОР РЕЗИНЫ · VW Sagitar ============ */
+:root{
+  --bg:#f2f5f7; --card:#fff; --ink:#14202b; --muted:#4b5a68;
+  --line:#dde3e8; --navy:#1c3f5e; --navy2:#2d5f86; --red:#8b2e2e;
+  --ok:#1f6b47; --warn:#a8641b; --chip:#e8eef4; --sel:#fff6e0;
+  --shadow:0 1px 2px rgba(20,32,43,.06),0 8px 24px rgba(20,32,43,.06);
+  --r:14px; --fs:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:var(--fs)/1.55 "Segoe UI",Roboto,system-ui,-apple-system,Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,h4{line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(26px,3.4vw,40px);letter-spacing:-.02em}
+h2{font-size:clamp(22px,2.4vw,30px);letter-spacing:-.01em}
+h3{font-size:20px}
+p{margin:0 0 .9em}
+a{color:var(--navy2);text-decoration:none;border-bottom:1px solid rgba(45,95,134,.3)}
+a:hover{color:var(--navy);border-bottom-color:var(--navy)}
+small,.small{font-size:14px;color:#465563}
+.wrap{max-width:1280px;margin:0 auto;padding:0 18px}
+
+/* ---------- шапка: ровно две строки, «Мой набор» — в первой ---------- */
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.top .wrap{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;
+  gap:2px 10px;padding-top:6px;padding-bottom:6px}
+.logo{grid-area:1/1;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
+.logo .dot{width:22px;height:22px;border-radius:50%;background:
+  radial-gradient(circle at 35% 30%,#4a7ba6,#1c3f5e 60%,#0e2639);box-shadow:inset 0 0 0 3px #fff,0 0 0 1px var(--line)}
+.ver{grid-area:1/2;font-size:11px;color:var(--muted);border:1px solid var(--line);padding:1px 6px;border-radius:999px;white-space:nowrap}
+.nav{grid-area:2/1/3/5;display:flex;gap:2px;margin-left:0;flex-wrap:nowrap;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:12px;padding:3px 7px;border-radius:7px;color:#33475b;font-weight:600;border:0;white-space:nowrap}
+.nav a:hover{background:var(--chip);color:var(--ink)}
+.basket-btn{grid-area:1/4;justify-self:end;border:1px solid var(--navy);background:var(--navy);color:#fff;
+  border-radius:9px;padding:5px 10px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+.basket-btn[data-empty="1"]{background:#fff;color:var(--navy)}
+
+/* ---------- hero ---------- */
+.hero{padding:34px 0 10px}
+.hero .lead{font-size:clamp(17px,1.5vw,20px);color:#29394a;max-width:900px}
+.hero-shot{margin:18px 0 0}
+.hero-shot img{display:block;width:100%;height:210px;object-fit:cover;object-position:center 42%;
+  border:1px solid var(--line);border-radius:12px}
+/* Главные параметры подбора — brightest line on the page */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.chip{background:linear-gradient(135deg,#1c3f5e,#2d5f86);border:1px solid #16344d;border-radius:10px;
+  padding:8px 14px;font-size:14px;font-weight:600;color:#eaf3f9;box-shadow:0 2px 6px rgba(20,32,43,.16)}
+.chip b{color:#ffe27a;font-size:15px;font-weight:800}
+.chip-task{background:linear-gradient(135deg,#fff2b8,#ffd85c);border-color:#d9aa00;color:#4a3500}
+.chip-task b{color:#233b52}
+.alert{display:flex;gap:14px;align-items:flex-start;background:#fff5f4;border:1px solid #efd3cf;border-left:5px solid var(--red);
+  border-radius:12px;padding:16px 18px;margin:18px 0}
+.alert .ico{font-size:24px;line-height:1}
+.alert h3{margin:0 0 4px;color:var(--red);font-size:17px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 0}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.step .n{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;
+  align-items:center;justify-content:center;font-weight:700;font-size:14px;margin-bottom:6px}
+
+/* ---------- секции ---------- */
+section.block{padding:34px 0;scroll-margin-top:80px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.card.pad{padding:22px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.note{background:#f7f9fb;border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:10px;padding:12px 14px;font-size:14px}
+.note.warn{background:#fffaf0;border-left-color:var(--warn)}
+.note.bad{background:#fff5f4;border-left-color:var(--red)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;font-size:14px;align-items:start}
+/* Иерархия v1.5: значение маркировки — главное и яркое, объяснение — спокойное и читаемое */
+.kv dt{color:var(--navy);font-weight:800;font-size:16px;line-height:1.3;background:#eef3f8;
+  border:1px solid #cfdce7;border-radius:8px;padding:3px 10px;justify-self:start;white-space:nowrap}
+.kv dd{margin:0;color:#465563;font-weight:400;font-size:14px;line-height:1.5}
+/* Цветные метки — как на самой шине */
+.kv dt.mk-yellow{background:#ffe27a;border-color:#d9aa00;color:#4a3500;box-shadow:inset 0 0 0 2px #fff}
+.kv dt.mk-red{background:#ffe3e0;border-color:#cc7a70;color:#8b2e2e;box-shadow:inset 0 0 0 2px #fff}
+.kv dt.mk-white{background:#fff;border:2px solid var(--ink);color:var(--ink)}
+.kv dt.mk-navy{background:var(--navy);border-color:var(--navy);color:#fff;letter-spacing:.02em}
+.kv dt.mk-code{background:#eaf2f9;border-color:#b9cfe0;color:#123a5c;font-variant-numeric:tabular-nums}
+.mk-inline{display:inline-block;background:var(--navy);color:#fff;border-radius:5px;padding:0 6px;font-size:13px;font-weight:800;letter-spacing:.02em}
+/* Ключевые числа и решения — жёлтым, но внутри обычного текста */
+.hl{background:#fff2b8;color:#4a3500;font-weight:800;border-radius:5px;padding:0 5px;box-shadow:0 0 0 1px #e6c65a;white-space:nowrap}
+.steps-list{margin:0;padding-left:22px;font-size:15px;line-height:1.6;color:var(--ink)}
+.steps-list li{padding:5px 0 5px 6px;border-bottom:1px dashed var(--line)}
+.steps-list li:last-child{border-bottom:0}
+.steps-list li::marker{color:var(--navy);font-weight:800;font-size:16px}
+.steps-list li:first-child{background:#fffbea;border-radius:6px;font-weight:600}
+#sec-wheel-article .grid2>.card:nth-child(2) p.small b{font-weight:600;color:var(--ink)}
+
+figure.fig{margin:18px 0}
+figure.fig img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fff}
+figure.fig figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+figure.fig.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+figure.fig.pair figcaption{grid-column:1/-1;margin-top:4px}
+.zoomable{cursor:zoom-in}
+
+/* ---------- панель инструментов таблицы ---------- */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px;border-bottom:1px solid var(--line);background:#fbfcfd;border-radius:var(--r) var(--r) 0 0}
+.seg{display:inline-flex;background:#eef2f6;border-radius:10px;padding:3px}
+.seg button{border:0;background:transparent;padding:7px 12px;border-radius:8px;font:inherit;font-size:14px;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1);font-weight:600}
+select,input[type=search],input[type=number]{font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink)}
+input[type=search]{min-width:210px}
+label.inline{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--muted);cursor:pointer}
+.spacer{flex:1}
+/* ---------- v1.6: сортировка и связь таблиц ---------- */
+.sort-panel{display:flex;gap:10px 14px;flex-wrap:wrap;align-items:center;padding:12px 14px;background:#f4f8fc;border-bottom:1px solid var(--line)}
+.sort-panel label{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.sort-panel input[type=number]{width:150px}
+.sort-panel select[multiple]{min-width:150px;height:auto;padding:2px}
+.sort-panel button,.offer-chip button{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);cursor:pointer}
+.shop-total{font-size:13px;font-weight:700;color:var(--navy2)}
+.offer-chip{display:inline-flex;align-items:center;gap:8px;padding:4px 8px;border-radius:8px;background:#eef3f8;font-size:13px;color:var(--ink)}
+.offer-chip[hidden]{display:none}
+.btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 13px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
+.btn:hover{background:var(--chip)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600}
+.btn.primary:hover{background:#16324b}
+.btn.ghost{border-color:transparent;color:var(--navy2)}
+
+/* ---------- таблица ---------- */
+.tbl-scroll{overflow:auto;max-height:78vh;border-radius:0 0 var(--r) var(--r)}
+table.tbl{border-collapse:separate;border-spacing:0;width:100%;font-size:14px;min-width:1080px}
+table.tbl th,table.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;background:#fff}
+table.tbl thead th{position:sticky;top:0;z-index:3;background:#f4f7f9;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4a5866;font-weight:700;white-space:nowrap;cursor:pointer;user-select:none;border-bottom:1px solid #cfd8df}
+table.tbl thead th:hover{background:#e9eff4}
+table.tbl thead th .arr{opacity:.35;font-size:10px;margin-left:3px}
+table.tbl thead th[data-dir] .arr{opacity:1;color:var(--navy)}
+table.tbl tbody tr:hover td{background:#f8fafc}
+table.tbl tbody tr.is-selected td{background:var(--sel)}
+table.tbl tbody tr.group-row td{background:#eef3f7;font-weight:700;font-size:13px;color:var(--navy);position:static;padding-top:14px;padding-bottom:8px}
+th.sticky,td.sticky{position:sticky;left:0;z-index:2;box-shadow:1px 0 0 var(--line);background:#fff}
+th.sticky{z-index:4;background:#f4f7f9}
+td.sticky+.sticky{box-shadow:1px 0 0 var(--line),6px 0 8px -6px rgba(20,32,43,.12)}
+table.tbl tbody tr:hover td.sticky{background:#f8fafc}
+table.tbl tbody tr.is-selected td.sticky{background:var(--sel)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.name{font-weight:700;color:var(--navy);cursor:pointer;border-bottom:0}
+.name:hover{text-decoration:underline}
+.brand{color:var(--muted);font-weight:500}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;background:var(--chip);color:#33475b;white-space:nowrap}
+.tag.stud{background:#e8f0fb;color:#1c3f5e}
+.tag.fric{background:#eaf4ee;color:#1f6b47}
+.tag.size16{background:#fdf2e3;color:#8a5a12}
+.tag.size17{background:#f3e9fb;color:#5b3a7e}
+.tag.dim{background:#eef1f3;color:#6b7785}
+.tag.good{background:#e7f4ec;color:#1f6b47}
+.tag.bad{background:#fdeceb;color:#8b2e2e}
+.tag.shop{background:#eef3f8;color:#1c3f5e;cursor:pointer}
+.check{width:20px;height:20px;accent-color:#1c3f5e;cursor:pointer}
+.bar{position:relative;height:20px;min-width:110px;background:#f0f3f6;border-radius:5px;overflow:hidden}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#2d5f86,#1c3f5e);border-radius:5px}
+.bar>span{position:absolute;right:6px;top:0;line-height:20px;font-size:11px;font-weight:700;color:#14202b;
+  background:rgba(255,255,255,.82);padding:0 4px;border-radius:3px}
+.bar.b-ice>i{background:linear-gradient(90deg,#4a86b8,#1c3f5e)}
+.bar.b-snow>i{background:linear-gradient(90deg,#7fa8c9,#2d5f86)}
+.bar.b-noise>i{background:linear-gradient(90deg,#c9a06a,#8b5a2b)}
+.buy{font-weight:700;white-space:nowrap}
+.linkcell{cursor:pointer}
+.linkcell:hover b{text-decoration:underline;color:var(--navy)}
+.tag[data-size]{cursor:pointer}
+.tag[data-size]:hover{filter:brightness(.95);text-decoration:underline}
+.muted{color:var(--muted)}
+
+/* ---------- веса и пресеты: компактный блок, прилипший к верху таблицы (v1.5) ---------- */
+#sec-tires .card>.weight-box{position:sticky;top:66px;z-index:20;padding:6px 12px;
+  background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 3px 8px rgba(20,32,43,.05)}
+.weight-box .preset-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
+.weight-box .preset-row .btn{font-size:11px;padding:3px 7px}
+.weight-box .preset-row .btn[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700}
+.weight-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}
+.weight-row{display:grid;grid-template-columns:90px 1fr 40px;gap:7px;align-items:center;padding:1px 0;font-size:12px}
+.weight-row input[type=range]{width:100%;accent-color:var(--navy)}
+.weight-row b{text-align:right;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+#sec-tires .weight-box .legend-line{display:block;font-size:11px;line-height:1.3;padding:3px 0 0;
+  border-top:0;background:transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.src-url{display:block;max-width:250px;overflow-wrap:anywhere;word-break:break-all;font-size:11px;color:var(--muted)}
+#sec-fitters{scroll-margin-top:80px}
+#fitter-body{margin:10px 0 22px}
+/* Расстояние и время — отдельными строками; кнопки маршрутов — сразу под адресом, по левому краю */
+#fitter-body td.fitter-addr{padding-bottom:9px;vertical-align:top}
+#fitter-body .fitter-addr-txt{display:block;line-height:1.35}
+#fitter-body .fitter-addr .route-buttons{max-width:100%}
+#fitter-body .fitter-time{display:block;font-size:13px;color:var(--muted);margin-top:3px;white-space:nowrap}
+/* Единый шаблон кнопок проезда во всех таблицах точек покупки: под текстом, слева */
+.route-buttons{display:inline-flex;gap:4px;flex-wrap:wrap;justify-content:flex-start;margin-top:6px}
+.route-buttons .btn{font-size:11px;font-weight:700;padding:4px 6px;line-height:1.1;white-space:nowrap}
+td.route-cell{padding-bottom:9px;vertical-align:top}
+td.route-cell .route-buttons{max-width:100%}
+.route-time{display:block;font-size:13px;color:var(--muted);margin-top:3px;white-space:nowrap}
+
+/* ---------- карточка товара ---------- */
+.detail{margin:16px 0;border:1px solid var(--navy);border-radius:var(--r);background:#fff;box-shadow:0 10px 40px rgba(20,32,43,.12);overflow:hidden;scroll-margin-top:80px}
+.detail-h{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:linear-gradient(180deg,#f8fbfd,#eef4f8);border-bottom:1px solid var(--line)}
+.detail-h h3{margin:0}
+.detail-h .x{margin-left:auto}
+.detail-body{padding:18px 20px;display:grid;grid-template-columns:1.1fr 1fr;gap:22px}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:15px}
+.specs div{border-bottom:1px dashed var(--line);padding-bottom:8px;font-weight:700;color:var(--ink)}
+.specs b{display:block;font-size:11px;color:#5b6a78;text-transform:uppercase;letter-spacing:.04em;font-weight:500}
+.shoplist{display:flex;flex-direction:column;gap:10px}
+.shoprow{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:#fcfdfe}
+.shoprow .top-line{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.shoprow .nm{font-weight:700}
+.shoprow .addr{font-size:13px;color:var(--muted);margin:3px 0 8px}
+.shoprow .acts{display:flex;gap:8px;flex-wrap:wrap}
+.shoprow .price{font-weight:800;font-size:17px;color:var(--ink)}
+.legend-line{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:#465563;padding:10px 14px;border-top:1px solid var(--line);background:#fbfcfd}
+
+/* ---------- графики ---------- */
+.chart{padding:16px 18px}
+.chart h4{margin:0 0 2px;font-size:16px}
+.chart .sub{font-size:12px;color:var(--muted);margin-bottom:12px}
+.crow{display:grid;grid-template-columns:190px 1fr 64px;gap:10px;align-items:center;padding:4px 0;cursor:pointer;border-radius:6px}
+.crow:hover{background:#f6f9fb}
+.crow .lbl{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crow .track{display:block;height:18px;background:#f1f4f7;border-radius:4px;overflow:hidden}
+.crow .fill{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#4a86b8,#1c3f5e);min-width:2px;transition:width .3s}
+.crow .val{font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;text-align:right;color:var(--ink)}
+.crow.best .fill{background:linear-gradient(90deg,#2f8a5e,#1f6b47)}
+.chart .axis{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:6px 74px 0 200px;border-top:1px solid var(--line);padding-top:4px}
+
+/* ---------- баннер набора ---------- */
+.basket{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#14202b;color:#fff;transform:translateY(110%);transition:transform .25s}
+.basket.open{transform:none}
+body.has-basket{padding-bottom:66px}
+.basket .wrap{display:flex;gap:12px;align-items:center;padding:10px 18px;flex-wrap:wrap}
+.basket .txt{font-size:14px}
+.basket .txt b{color:#ffd479}
+.basket button{border:0;border-radius:9px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer}
+.basket .go{background:#ffd479;color:#14202b}
+.basket .clr{background:transparent;color:#c9d3dc;border:1px solid #3a4c5c}
+
+/* ---------- Сергей ---------- */
+.sergey{background:#fff;border-radius:var(--r);padding:26px;border:1px solid var(--line)}
+.sergey h2{font-size:30px;margin:0 0 6px}
+.sergey .when{font-size:18px;color:var(--red);font-weight:700;margin-bottom:18px}
+.s-card{border:3px solid #14202b;border-radius:14px;padding:18px;margin:0 0 14px}
+.s-card .role{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:#5d6b78;font-weight:700}
+.s-card .ttl{font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.15;margin:2px 0 6px}
+.s-card .sz{font-size:clamp(20px,2.4vw,26px);font-weight:700;color:var(--navy)}
+.s-card .addr{font-size:clamp(18px,2.1vw,23px);margin:10px 0}
+.s-card .nav-big{display:inline-block;background:#14202b;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-size:20px;font-weight:700;margin:6px 8px 0 0}
+.s-card .tel-big{display:inline-block;background:#eef3f7;color:#14202b;border-radius:10px;padding:12px 18px;font-size:20px;font-weight:700;margin:6px 0 0}
+.s-empty{font-size:18px;color:var(--muted);border:2px dashed var(--line);border-radius:12px;padding:22px;text-align:center}
+.s-check{font-size:18px;padding-left:26px;position:relative;margin:6px 0}
+.s-check:before{content:"✓";position:absolute;left:0;color:#1f6b47;font-weight:800}
+
+/* ---------- купить: прямые ссылки ---------- */
+.buy-group{margin:0 0 18px}
+.buy-group>h3{margin:0 0 8px;color:var(--navy)}
+.buy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.buy-link{display:block;border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:10px;
+  padding:12px 14px;background:#fff;text-decoration:none;color:inherit;min-width:0}
+.buy-link:hover{border-color:var(--navy);box-shadow:0 3px 12px rgba(20,32,43,.09)}
+.buy-link b{display:block;font-size:16px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px}
+.buy-link span{display:block;font-size:13px;color:#33434f;margin-bottom:5px}
+.buy-link small{display:block;font-size:11px;color:var(--muted);word-break:break-all}
+
+/* ---------- отдельные диски и варианты комплектов ---------- */
+.grp{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;
+  background:#eef3f8;color:#1c3f5e;white-space:nowrap;margin-bottom:4px}
+.grp.cast{background:#f3e9fb;color:#5b3a7e}
+.grp.steel{background:#fdf2e3;color:#8a5a12}
+.var-name{font-weight:800;color:var(--navy);font-size:15px;line-height:1.25}
+.var-total{font-size:18px;font-weight:800;color:var(--navy);white-space:nowrap}
+.src-url{word-break:break-all;font-size:11px;color:var(--muted)}
+.no-data{padding:22px;text-align:center;color:#5d6b78}
+
+/* ---------- футер ---------- */
+footer{border-top:1px solid var(--line);background:#fff;margin-top:40px;padding:26px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+footer a{border-bottom:0}
+
+/* ---------- модалка ---------- */
+.modal{position:fixed;inset:0;background:rgba(10,18,26,.55);display:none;z-index:100;padding:20px;overflow:auto}
+.modal.open{display:block}
+.modal .sheet{max-width:860px;margin:40px auto;background:#fff;border-radius:16px;padding:26px 28px;position:relative}
+.modal .sheet h2{margin-top:0}
+.modal .x{position:absolute;right:14px;top:12px;border:0;background:#eef2f6;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer}
+.modal[data-first="1"] .x{display:none}
+.modal .accept{display:block;margin:18px 0 0;padding:12px 22px;border:0;border-radius:10px;
+  background:var(--navy);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.modal .accept:hover{background:var(--navy2)}
+body.legal-lock{overflow:hidden}
+
+/* ---------- tables fit the screen: no horizontal scroll where there is room ---------- */
+@media (max-width:1100px){
+  table.tbl th,table.tbl td{padding:7px 5px}
+  .col-traffic{display:none}
+}
+
+/* ---------- мобильный ---------- */
+@media (max-width:980px){
+  .grid2,.grid3,.steps{grid-template-columns:1fr}
+  .detail-body{grid-template-columns:1fr}
+  .nav{width:100%;margin-left:0;overflow:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{white-space:nowrap}
+  .crow{grid-template-columns:130px 1fr 56px}
+  .chart .axis{margin-left:140px;margin-right:66px}
+  figure.fig.pair{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  :root{--fs:15px}
+  .wrap{padding:0 12px}
+  .ver{display:none}
+  .basket-btn{padding:7px 10px;font-size:14px}
+  table.tbl{min-width:860px}
+  .toolbar{padding:10px}
+  input[type=search]{min-width:140px;flex:1}
+  .seg button{padding:7px 9px;font-size:13px}
+}
+
+/* ---------- печать ---------- */
+@media print{
+  @page{size:A4 portrait;margin:10mm}
+  body{background:#fff;font-size:12pt}
+  .top,.nav,.hero,.toolbar,.basket,.detail,.modal,footer,.no-print,section.block:not(#sec-sergey){display:none !important}
+  #sec-sergey{display:block !important;padding:0}
+  #sergey-print{display:block !important;padding:0}
+  #sergey-body{column-count:2;column-gap:7mm}
+  #sergey-body>h2,#sergey-body>.when,#sergey-body>.note{column-span:all}
+  .s-card{break-inside:avoid;page-break-inside:avoid;margin-bottom:5mm}
+  .sergey{padding:0;border:0}
+  .s-card{border-width:2px;break-inside:avoid;page-break-inside:avoid;margin-bottom:6mm;padding:10px 12px}
+  .s-card .role{font-size:9pt}
+  .s-card .ttl{font-size:16pt}
+  .s-card .sz{font-size:12pt}
+  .s-card .addr{font-size:11pt;margin:5px 0}
+  .nav-big,.tel-big{background:#fff !important;color:#000 !important;border:2px solid #000 !important;font-size:11pt !important;padding:4px 10px !important}
+  .tel-big{display:none !important}
+  .s-check{font-size:11pt;margin:3px 0}
+  a{color:#000;text-decoration:none}
+  .sergey h2{font-size:17pt;margin-bottom:2px}
+  .sergey .when{font-size:11pt;margin-bottom:8px}
+  .print-figs{grid-template-columns:1fr !important;gap:0;margin-top:6mm}
+  .print-figs figure.fig{break-inside:avoid;page-break-inside:avoid;margin:0 0 4mm}
+  .print-figs figure.fig img{width:100%;max-height:150mm;object-fit:contain;border:1px solid #999}
+  .print-figs figure.fig figcaption{font-size:9pt}
+  figure.fig.pair{grid-template-columns:1fr 1fr;gap:2mm}
+  figure.fig.pair img{max-height:95mm;object-fit:contain}
+  #fitter-body{font-size:8pt;margin-bottom:5mm;break-inside:avoid;page-break-inside:avoid}
+  #fitter-body table.tbl{min-width:0!important;font-size:8pt}
+  #fitter-body th,#fitter-body td{padding:3px 5px}
+  #fitter-body .btn{display:none!important}
+  #fitter-body td.fitter-addr{padding-bottom:3px!important}
+  #fitter-body .fitter-time{font-size:8pt;margin-top:0}
+  #fitter-body .tag{font-size:7pt}
+  .route-buttons{display:none!important}
+  td.route-cell{padding-bottom:3px!important}
+  .route-time{font-size:8pt;margin-top:0}
+}
