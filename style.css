@@ -310,12 +310,20 @@ body.legal-lock{overflow:hidden}
 @media (max-width:640px){
   :root{--fs:15px}
   .wrap{padding:0 12px}
-  .ver{display:none}
-  .basket-btn{padding:7px 10px;font-size:14px}
+  .top .wrap{gap:2px 5px}
+  .logo{font-size:12px;gap:5px}
+  .logo .dot{width:16px;height:16px}
+  .ver{font-size:9px;padding:1px 3px;max-width:90px;overflow:hidden;text-overflow:ellipsis}
+  .ver-full{display:none}
+  .basket-btn{padding:6px 8px;font-size:12px}
   table.tbl{min-width:860px}
   .toolbar{padding:10px}
   input[type=search]{min-width:140px;flex:1}
   .seg button{padding:7px 9px;font-size:13px}
+  /* Юридический щит: кнопка принятия остаётся доступной без прокрутки. */
+  .modal{padding:10px 12px}
+  .modal .sheet{margin:50px auto 10px;padding:18px 18px 20px;max-height:calc(100dvh - 60px);overflow:auto}
+  .modal .accept{position:sticky;bottom:0;width:100%;margin-top:14px;z-index:2}
 }
 
 /* ---------- печать ---------- */
